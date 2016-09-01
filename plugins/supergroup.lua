@@ -2419,7 +2419,7 @@ local function run(msg, matches)
 				end
 			end
 		end
-		if matches[1] == 'ان میوت' and is_momod(msg) then
+		if matches[1] == 'ازاد کردن' and is_momod(msg) then
 			local chat_id = msg.to.id
 			if matches[2] == 'موزیک' then
 			local msg_type = 'Audio'
