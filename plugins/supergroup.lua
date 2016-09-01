@@ -2549,7 +2549,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'راهنما' and not is_owner(msg) then
-			text = "Message /superhelp to @x_R_E_D_B_O_T_x in private for SuperGroup help"
+			text = "باشه بای :D"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'راهنما' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
