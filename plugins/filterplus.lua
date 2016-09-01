@@ -7,14 +7,14 @@
 
 ]]
 local function addword(msg, name)
-    local hash = 'chat:'..msg.to.id..':badword'
+    local hash = 'chat:'..msg.to.id..':فیلتر'
     redis:hset(hash, name, 'newword')
     return "کلمه جدید به فیلتر کلمات اضافه شد\n>"..name
 end
 
 local function get_variables_hash(msg)
 
-    return 'chat:'..msg.to.id..':badword'
+    return 'chat:'..msg.to.id..':فیلتر'
 
 end 
 
@@ -81,7 +81,7 @@ end
 local function run(msg, matches)
   if matches[2] == 'فیلتر' then
   if not is_momod(msg) then
-   return 'فقط برای مدیران'
+   return 'only for moderators'
   end
   local name = string.sub(matches[3], 1, 50)
 
@@ -90,7 +90,7 @@ local function run(msg, matches)
   end
   if matches[2] == 'کلمات فیلترشده' then
   return list_variablesbad(msg)
-  elseif matches[2] == 'حذف فیلترها' then
+  elseif matches[2] == 'پاک کردن فیلترها' then
 if not is_momod(msg) then return '_|_' end
   local asd = '1'
     return clear_commandbad(msg, asd)
@@ -110,7 +110,7 @@ return {
   "^(فیلتر) (.*)$",
    "^(حذف فیلتر) (.*)$",
     "^(لیست کلمات فیلترشده)$",
-    "^(حذف فیلترها)$",
+    "^(پاک کردن فیلترها)$",
 "^(.+)$",
    "^([Rr]w) (.*)$",
    "^([Aa]ddword) (.*)$",
