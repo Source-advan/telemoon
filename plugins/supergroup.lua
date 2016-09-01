@@ -39,7 +39,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup ['..msg.to.title..'] has been added!\nUser Info: [@'..msg.from.username..'] ('..msg.from.id..')'
+	  local text = 'ربات فعال شد'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -63,7 +63,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been removed!\nUser Info: [@'..msg.from.username..'] ('..msg.from.id..')'
+	  local text = 'ربات غیر فعال شد'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -1014,7 +1014,7 @@ local function promote2(receiver, member_username, user_id)
   local group = string.gsub(receiver, 'channel#id', '')
   local member_tag_username = string.gsub(member_username, '@', '(at)')
   if not data[group] then
-    return send_large_msg(receiver, 'SuperGroup is not added.')
+    return send_large_msg(receiver, 'ربات فعال نشده بود.')
   end
   if data[group]['moderators'][tostring(user_id)] then
     return send_large_msg(receiver, member_username..' قبلا ارتقا یافته است')
@@ -1028,7 +1028,7 @@ local function demote2(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
   if not data[group] then
-    return send_large_msg(receiver, 'Group is not added.')
+    return send_large_msg(receiver, 'ربات فعال نشده بود.')
   end
   if not data[group]['moderators'][tostring(user_id)] then
     return send_large_msg(receiver, member_tag_username..' is not a moderator.')
@@ -1042,7 +1042,7 @@ local function modlist(msg)
   local data = load_data(_config.moderation.data)
   local groups = "groups"
   if not data[tostring(groups)][tostring(msg.to.id)] then
-    return 'SuperGroup is not added.'
+    return 'ربات فعال نشده بود.'
   end
   -- determine if table is empty
   if next(data[tostring(msg.to.id)]['moderators']) == nil then
@@ -1534,25 +1534,25 @@ local function run(msg, matches)
 	local print_name = user_print_name(msg.from):gsub("?", "")
 	local name_log = print_name:gsub("_", " ")
 	local data = load_data(_config.moderation.data)
-		if matches[1] == 'add' and not matches[2] then
+		if matches[1] == 'فعال' and not matches[2] then
 			if not is_admin1(msg) and not is_support(support_id) then
 				return
 			end
 			if is_super_group(msg) then
-				return reply_msg(msg.id, 'SuperGroup is already added.', ok_cb, false)
+				return reply_msg(msg.id, 'ربات از قبل فعال بود', ok_cb, false)
 			end
-			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") added")
+			print("ربات فعال شد.")
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] added SuperGroup")
 			superadd(msg)
 			set_mutes(msg.to.id)
 			channel_set_admin(receiver, 'user#id'..msg.from.id, ok_cb, false)
 		end
 
-		if matches[1] == 'rem' and is_admin1(msg) and not matches[2] then
+		if matches[1] == 'غیر فعال' and is_admin1(msg) and not matches[2] then
 			if not is_super_group(msg) then
-				return reply_msg(msg.id, 'SuperGroup is not added.', ok_cb, false)
+				return reply_msg(msg.id, 'ربات فعال نشده بود.', ok_cb, false)
 			end
-			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") removed")
+			print("گروه غیر فعال شد.")
 			superrem(msg)
 			rem_mutes(msg.to.id)
 		end
@@ -2616,8 +2616,8 @@ end
 
 return {
   patterns = {
-	"^(add)$",
-	"^(rem)$",
+	"^(فعال)$",
+	"^(غیرفعال)$",
 	"^[#!/]([Mm]ove) (.*)$",
 	"^(توضیحات)$",
 	"^(ادمین ها)$",
@@ -2684,4 +2684,3 @@ return {
   run = run,
   pre_process = pre_process
 }
-
