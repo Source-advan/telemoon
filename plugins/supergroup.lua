@@ -1729,7 +1729,7 @@ local function run(msg, matches)
 			end
 			local group_link = data[tostring(msg.to.id)]['settings']['set_link']
 			if not group_link then
-				return "Create a link using /newlink first!\n\nOr if I am not creator use /setlink to set your link"
+				return "ساخت لینک جدید با دستور لینک جدید\nاگر من سازنده گروه نیستم میتوانید با ارسال دستور ثبت لینک لینک را ثبت نمائید"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
 			return "Group link:\n"..group_link
