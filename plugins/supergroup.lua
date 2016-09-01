@@ -2548,10 +2548,10 @@ local function run(msg, matches)
 			return get_rules(msg, data)
 		end
 
-		if matches[1] == 'راهنما' and not is_owner(msg) then
+		if matches[1] == 'هلپ' and not is_owner(msg) then
 			text = "باشه بای :D"
 			reply_msg(msg.id, text, ok_cb, false)
-		elseif matches[1] == 'راهنما' and is_owner(msg) then
+		elseif matches[1] == 'هلپ' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] Used /superhelp")
 			return super_help()
@@ -2667,7 +2667,7 @@ return {
 	"^(قوانین)$",
 	"^(ثبت فلود) (%d+)$",
 	"^(تمیز) (.*)$",
-	"^(راهنما)$",
+	"^(هلپ)$",
 	"^(لیست سکوت)$",
 	"^(لیست خفه شدگان)$",
     "[#!/](mp) (.*)",
