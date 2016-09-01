@@ -263,11 +263,11 @@ local function lock_group_leave(msg, data, target)
   end
   local group_leave_lock = data[tostring(target)]['settings']['leave']
   if group_leave_lock == 'yes' then
-    return 'leave is already locked'
+    return '🔒ضد خروج از قبل فعال بوده است🔒'
   else
     data[tostring(target)]['settings']['leave'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'leave has been locked'
+    return '🔒ضد خروج فعال شد🔒'
   end
 end
 
@@ -277,11 +277,11 @@ local function unlock_group_leave(msg, data, target)
   end
   local group_leave_lock = data[tostring(target)]['settings']['leave']
   if group_leave_lock == 'no' then
-    return 'leave is not locked'
+    return '🔓ضد خروج غیر فعال است🔓'
   else
     data[tostring(target)]['settings']['leave'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'leave has been unlocked'
+    return '🔓ضد خروج غیر فعال شد🔓'
   end
 end
 
@@ -319,11 +319,11 @@ local function lock_group_username(msg, data, target)
   end
   local group_username_lock = data[tostring(target)]['settings']['username']
   if group_username_lock == 'yes' then
-    return 'username is already locked'
+    return '🔒ضد یوزرنیم از قبل فعال بوده است🔒'
   else
     data[tostring(target)]['settings']['username'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'username has been locked'
+    return '🔒ضد یوزرنیم فعال شد🔒'
   end
 end
 
@@ -333,11 +333,11 @@ local function unlock_group_username(msg, data, target)
   end
   local group_username_lock = data[tostring(target)]['settings']['username']
   if group_username_lock == 'no' then
-    return 'username is not locked'
+    return '🔓ضد یوزرنیم غیر فعال است🔓'
   else
     data[tostring(target)]['settings']['username'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'username has been unlocked'
+    return '🔓ضد یوزرنیم غیر فعال شد🔓'
   end
 end
 
@@ -487,11 +487,11 @@ local function lock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['tag']
   if group_tag_lock == 'yes' then
-    return 'tag is already locked'
+    return '🔒ضد تگ از قبل فعال بوده است🔒'
   else
     data[tostring(target)]['settings']['tag'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'tag has been locked'
+    return '🔒ضد تگ فعال شد🔒'
   end
 end
 
@@ -501,11 +501,11 @@ local function unlock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['tag']
   if group_tag_lock == 'no' then
-    return 'tag is not locked'
+    return '🔓ضد تگ غیر فعال است🔓'
   else
     data[tostring(target)]['settings']['tag'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'tag has been unlocked'
+    return '🔓ضد تگ غیر فعال شد🔓'
   end
 end
 
