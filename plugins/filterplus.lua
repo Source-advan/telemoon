@@ -79,22 +79,22 @@ function clear_commandsbad(msg, cmd_name)
 end
 
 local function run(msg, matches)
-  if matches[2] == 'addword' then
+  if matches[2] == 'فیلتر' then
   if not is_momod(msg) then
-   return 'only for moderators'
+   return 'فقط برای مدیران'
   end
   local name = string.sub(matches[3], 1, 50)
 
   local text = addword(msg, name)
   return text
   end
-  if matches[2] == 'badwords' then
+  if matches[2] == 'کلمات فیلترشده' then
   return list_variablesbad(msg)
-  elseif matches[2] == 'clearbadwords' then
+  elseif matches[2] == 'حذف فیلترها' then
 if not is_momod(msg) then return '_|_' end
   local asd = '1'
     return clear_commandbad(msg, asd)
-  elseif matches[2] == 'remword' or matches[2] == 'rw' then
+  elseif matches[2] == 'حذف فیلتر' or matches[2] == 'rw' then
    if not is_momod(msg) then return '_|_' end
     return clear_commandsbad(msg, matches[3])
   else
@@ -107,10 +107,10 @@ end
 return {
   patterns = {
   "^([!/])(rw) (.*)$",
-  "^([!/])(addword) (.*)$",
-   "^([!/])(remword) (.*)$",
-    "^([!/])(badwords)$",
-    "^([!/])(clearbadwords)$",
+  "^(فیلتر) (.*)$",
+   "^(حذف فیلتر) (.*)$",
+    "^(لیست کلمات فیلترشده)$",
+    "^(حذف فیلترها)$",
 "^(.+)$",
    "^([Rr]w) (.*)$",
    "^([Aa]ddword) (.*)$",
