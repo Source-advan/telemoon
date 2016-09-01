@@ -885,7 +885,7 @@ function show_supergroup_settingsmod(msg, target)
         	NUM_MSG_MAX = 5
       	end
     end
-    local bots_protection = "Yes"
+    local bots_protection = "روشن"
     if data[tostring(target)]['settings']['lock_bots'] then
     	bots_protection = data[tostring(target)]['settings']['lock_bots']
    	end
@@ -978,7 +978,7 @@ function show_supergroup_settingsmod(msg, target)
   	mute_fwd = 'no'
   end
   local settings = data[tostring(target)]['settings']
-  local text = "____________________\nSuperGroup settings:\n____________________\n>Lock links : "..settings.lock_link.."\n>Lock contacts: "..settings.lock_contacts.."\n>Lock flood: "..settings.flood.."\n>Flood sensitivity : "..NUM_MSG_MAX.."\n>Lock spam: "..settings.lock_spam.."\n>Lock Arabic: "..settings.lock_arabic.."\n>Lock Member: "..settings.lock_member.."\n>Lock RTL: "..settings.lock_rtl.."\n>Lock Tgservice: "..settings.lock_tgservice.."\n>Lock sticker: "..settings.lock_sticker.."\n>Lock tag(#): "..settings.tag.."\n>Lock emoji: "..settings.emoji.."\n>Lock english: "..settings.english.."\n>Lock fwd(forward): "..mute_fwd.."\n>Lock reply: "..mute_reply.."\n>Lock join: "..settings.join.."\n>Lock username(@): "..settings.username.."\n>Lock media: "..settings.media.."\n>Lock fosh: "..settings.fosh.."\n>Lock leave: "..settings.leave.."\n>Lock bots: "..bots_protection.."\n>Lock operator: "..settings.operator.."\n____________________\nEasy Sweet&Faster Switch:\n____________________\n>Switch Model Etehad: "..settings.etehad.."\n>Lock all: "..settings.all.."\n____________________\nAbout Group:\n____________________\n>group type: "..gp_type.."\n>Public: "..settings.public.."\n>Strict settings: "..settings.strict.."\n____________________\n>>bot version : v2.9<<\n>>>R E D B O T<<<\n>>@Red_ch<<"
+  local text = "____________________\nتنظیمات سوپرگروه:\n____________________\n>قفل لینک : "..settings.lock_link.."\n>قفل مخاطب: "..settings.lock_contacts.."\n>قفل حساسیت اسپم: "..settings.flood.."\n>حساسیت اسپم : "..NUM_MSG_MAX.."\n>قفل اسپم: "..settings.lock_spam.."\n>قفل عربی: "..settings.lock_arabic.."\n>قفل ممبر: "..settings.lock_member.."\n>قفل rtl: "..settings.lock_rtl.."\n>قفل سرویس: "..settings.lock_tgservice.."\n>قفل استیکر: "..settings.lock_sticker.."\n>قفل تگ(#): "..settings.tag.."\n>قفل اموجی: "..settings.emoji.."\n>قفل انگلیسی: "..settings.english.."\n>قفل انگلیسی: "..mute_fwd.."\n>قفل ریپلای: "..mute_reply.."\n>قفل ورود و خروج: "..settings.join.."\n>قفل یوزرنیم (@): "..settings.username.."\n>قفل مدیا: "..settings.media.."\n>قفل فحش: "..settings.fosh.."\n>قفل خروج: "..settings.leave.."\n>قفل ربات ها: "..bots_protection.."\n>قفل اپراتور: "..settings.operator.."\n>قفل همه: "..settings.all.."\n____________________\nدرباره گروه:\n____________________\n>مدل گروه: "..gp_type.."\n>عمومی: "..settings.public.."\n>خودکار: "..settings.strict.."\n____________________\n>>ورژن ربات : v2.9<<\n>>>R E D B O T<<<\n>>@Red_ch<<"
   return text
 end
 
@@ -1681,7 +1681,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return ">Your Name: " ..string.gsub(msg.from.print_name, "_", " ").. "\n>Your Username: @"..(msg.from.username or '----').."\n>Your ID: "..msg.from.id.."\n\n>SuperGroup Name: " ..string.gsub(msg.to.print_name, "_", " ").. "\n>SuperGroup ID: "..msg.to.id
+				return ">نام شما: " ..string.gsub(msg.from.print_name, "_", " ").. "\n>یوزرنیم شما: @"..(msg.from.username or '404 not found').."\n>آیدی شما: "..msg.from.id.."\n>شماره شما: "..(msg.from.phone or '404 not found').."\n>نام گروه: " ..string.gsub(msg.to.print_name, "_", " ").. "\n>آیدی سوپر گروه: "..msg.to.id.."\n>لینک شما: Telegram.me/"..(msg.from.username or '404 not found')"
 			end
 		end
 
