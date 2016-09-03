@@ -34,8 +34,8 @@ end
 
 return {
     patterns = {
-        '^(قفل) fwd$',
-        '^(باز کردن) fwd$'
+        '^(قفل) فروارد$',
+        '^(باز کردن) فروارد$'
     },
     run = run,
     pre_process = pre_process
