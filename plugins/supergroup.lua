@@ -1749,7 +1749,7 @@ local function run(msg, matches)
 			if msg.text:match("^(https://telegram.me/joinchat/%S+)$") and data[tostring(msg.to.id)]['settings']['set_link'] == 'waiting' and is_owner(msg) then
 				data[tostring(msg.to.id)]['settings']['set_link'] = msg.text
 				save_data(_config.moderation.data, data)
-				return "New link set"
+				return "لینک جدید ثبت شد"
 			end
 		end
 
@@ -1762,7 +1762,7 @@ local function run(msg, matches)
 				return "ساخت لینک جدید با دستور لینک جدید\nاگر من سازنده گروه نیستم میتوانید با ارسال دستور ثبت لینک لینک را ثبت نمائید"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "Group link:\n"..group_link
+			return "لینک گروه:\n➖➖➖➖➖➖➖➖\n"..group_link
 		end
 
 		if matches[1] == "دعوت" and is_sudo(msg) then
@@ -1856,7 +1856,7 @@ local function run(msg, matches)
 			end
 		end
 
-		if matches[1] == 'ثبت صاحب گروه' and is_owner(msg) then
+		if matches[1] == 'مالک' and is_owner(msg) then
 			if type(msg.reply_id) ~= "nil" then
 				local cbreply_extra = {
 					get_cmd = 'setowner',
@@ -2026,7 +2026,7 @@ local function run(msg, matches)
 			return 'Please send the new group photo now'
 		end
 
-		if matches[1] == 'تمیز' then
+		if matches[1] == 'پاک کردن' then
 			if not is_momod(msg) then
 				return
 			end
@@ -2042,7 +2042,7 @@ local function run(msg, matches)
 					save_data(_config.moderation.data, data)
 				end
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned modlist")
-				return 'لیست مدیران تمیز شد'
+				return 'لیست مدیران پاک شد'
 			end
 			if matches[2] == 'قوانین' then
 				local data_cat = 'rules'
@@ -2067,7 +2067,7 @@ local function run(msg, matches)
 				channel_set_about(receiver, about_text, ok_cb, false)
 				return "About has been cleaned"
 			end
-			if matches[2] == 'خفه شدگان' then
+			if matches[2] == 'بیصدا' then
 				chat_id = msg.to.id
 				local hash =  'mute_user:'..chat_id
 					redis:del(hash)
@@ -2537,11 +2537,11 @@ local function run(msg, matches)
 				if is_muted_user(chat_id, user_id) then
 					unmute_user(chat_id, user_id)
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] removed ["..user_id.."] from the muted users list")
-					return "["..user_id.."] removed from the muted users list"
+					return "["..user_id.."] از لیست سکوت حذف شد"
 				elseif is_momod(msg) then
 					mute_user(chat_id, user_id)
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] added ["..user_id.."] to the muted users list")
-					return "["..user_id.."] added to the muted user list"
+					return "["..user_id.."] به لیست سکوت اضافه شد"
 				end
 			elseif matches[1] == "سکوت" or matches[1] == "" and not string.match(matches[2], '^%d+$') then
 				local receiver = get_receiver(msg)
@@ -2561,7 +2561,7 @@ local function run(msg, matches)
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup muteslist")
 			return mutes_list(chat_id)
 		end
-		if matches[1] == "لیست خفه شدگان" and is_momod(msg) then
+		if matches[1] == "لیست بیصدا and is_momod(msg) then
 			local chat_id = msg.to.id
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup mutelist")
 			return muted_user_list(chat_id)
@@ -2672,8 +2672,8 @@ return {
 	"^(نصب ادمین)",
 	"^(صلب ادمین) (.*)$",
 	"^(صلب ادمین)",
-	"^(ثبت صاحب گروه) (.*)$",
-	"^(ثبت صاحب گروه)$",
+	"^(مالک) (.*)$",
+	"^(مالک)$",
 	"^(ارتقا) (.*)$",
 	"^(ارتقا)",
 	"^(حذف مدیر) (.*)$",
@@ -2696,10 +2696,10 @@ return {
 	"^(تنظیمات)$",
 	"^(قوانین)$",
 	"^(ثبت حساسیت) (%d+)$",
-	"^(تمیز) (.*)$",
+	"^(پاک کردن) (.*)$",
 	"^(هلپ)$",
 	"^(لیست سکوت)$",
-	"^(لیست خفه شدگان)$",
+	"^(لیست بیصدا$",
     "[#!/](mp) (.*)",
 	"[#!/](md) (.*)",
     "^(https://telegram.me/joinchat/%S+)$",
