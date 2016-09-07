@@ -755,7 +755,7 @@ local function lock_group_contacts(msg, data, target)
   if not is_momod(msg) then
     return
   end
-  local group_rtl_lock = data[tostring(target)]['settings']['lock_contacts']
+  local group_contacts_lock = data[tostring(target)]['settings']['lock_contacts']
   if group_contacts_lock == 'روشن' then
     return 'Contact posting is already locked'
   else
