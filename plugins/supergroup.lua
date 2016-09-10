@@ -69,7 +69,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been removed'
+	  local text = 'SuperGroup has been removed by ['..msg.from.id..'](@'..msg.from.username..')'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -778,7 +778,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "SuperGroup settings:\n\nLock Links > "..settings.lock_link.."\nLock Webpage > "..settings.lock_webpage.."\nLock Tag > "..settings.lock_tag.."\nLock Emoji > "..settings.lock_emoji.."\nLock English > "..settings.lock_eng.."\nLock Badword > "..settings.lock_badw.."\nLock Flood > "..settings.flood.."\nFlood sensitivity > "..NUM_MSG_MAX.."\nLock Spam > "..settings.lock_spam.."\nLock Contacts > "..settings.lock_contacts.."\nLock Arabic/Persian > "..settings.lock_arabic.."\nLock Member > "..settings.lock_member.."\nLock RTL > "..settings.lock_rtl.."\nLock Forward > "..settings.lock_fwd.."\nLock TGservice > "..settings.lock_tgservice.."\nLock Sticker > "..settings.lock_sticker.."\nPublic > "..settings.public.."\nStrict Settings > "..settings.strict
+  local text = "⚙SuperGroup settings⚙:\n\n❗️Lock Links > "..settings.lock_link.."\n❗️Lock Webpage > "..settings.lock_webpage.."\n❗️Lock Tag > "..settings.lock_tag.."\n❗️Lock Emoji > "..settings.lock_emoji.."\n❗️Lock English > "..settings.lock_eng.."\n❗️Lock Badword > "..settings.lock_badw.."\n❗️Lock Flood > "..settings.flood.."\n❗️Flood sensitivity > "..NUM_MSG_MAX.."\n❗️Lock Spam > "..settings.lock_spam.."\n❗️Lock Contacts > "..settings.lock_contacts.."\n❗️Lock Arabic/Persian > "..settings.lock_arabic.."\n❗️Lock Member > "..settings.lock_member.."\n❗️Lock RTL > "..settings.lock_rtl.."\n❗️Lock Forward > "..settings.lock_fwd.."\n❗️Lock TGservice > "..settings.lock_tgservice.."\n❗️Lock Sticker > "..settings.lock_sticker.."\n❗️Public > "..settings.public.."\n❗️Strict Settings > "..settings.strict
   reply_msg(msg.id, text, ok_cb, false)
 end
 
@@ -821,7 +821,7 @@ local function promote2(receiver, member_username, user_id)
   end
   data[group]['moderators'][tostring(user_id)] = member_tag_username
   save_data(_config.moderation.data, data)
-  send_large_msg(receiver, member_username..' has been promoted.')
+  send_large_msg(receiver, member_username..' <b>has been promoted</b>')
 end
 
 local function demote2(receiver, member_username, user_id)
@@ -835,7 +835,7 @@ local function demote2(receiver, member_username, user_id)
   end
   data[group]['moderators'][tostring(user_id)] = nil
   save_data(_config.moderation.data, data)
-  send_large_msg(receiver, member_username..' has been demoted.')
+  send_large_msg(receiver, member_username..' <b>has been demoted</b>')
 end
 
 local function modlist(msg)
@@ -1383,7 +1383,7 @@ local function run(msg, matches)
 				return "*no owner,ask admins in support groups to set owner for your SuperGroup"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] used /owner")
-			return "SuperGroup owner is > ["..group_owner..']'
+			return "<b>SuperGroup owner is</b> > [<code>"..group_owner..'</code>]'
 		end
 
 		if matches[1] == "modlist" then
@@ -1481,7 +1481,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return reply_msg(msg.id, "> SuperGroup ID: "..msg.to.id.."\n> SuperGroup Name: "..msg.to.title.."\n> First Name: "..(msg.from.first_name or '').."\n> Last Name: "..(msg.from.last_name or '').."\n> Your ID: "..msg.from.id.."\n> Username: @"..(msg.from.username or '').."\n> Phone Number: +"..(msg.from.phone or '404 Not Found!').."\n> Your Link: Telegram.Me/"..(msg.from.username or '').."\n> Group Type: #SuperGroup", ok_cb, false)		end
+				return "> <b>SuperGroup ID</b>: <code>"..msg.to.id.."</code>\n> <b>Your ID</b>: <code>"..msg.from.id.."</code>\n> <b>Username</b>: @"..(msg.from.username or '').."\n> <b>Phone Number</b>: <code>+"..(msg.from.phone or '<b>404 Not Found</b>').."</code>\n> <b>Your Link</b>: Telegram.Me/"..(msg.from.username or '')		end
 		end
 
 		if matches[1] == 'kickme' then
