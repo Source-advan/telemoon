@@ -954,9 +954,9 @@ function get_message_callback(extra, success, result)
 			save_data(_config.moderation.data, data)
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] set: ["..result.from.peer_id.."] as owner by reply")
 			if result.from.username then
-				text = "@"..result.from.username.." [ "..result.from.peer_id.." ] <b>added as owner</b>"
+				text = "@"..result.from.username.." [ <code>"..result.from.peer_id.."</code> ] <b>added as owner</b>"
 			else
-				text = "[ "..result.from.peer_id.." ] <b>added as owner</b>"
+				text = "[ <code>"..result.from.peer_id.."</code> ] <b>added as owner</b>"
 			end
 			send_large_msg(channel_id, text)
 		end
