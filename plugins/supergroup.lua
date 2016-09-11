@@ -194,11 +194,11 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return reply_msg(msg.id,"> #Link posting is #already locked", ok_cb, false)
+    return reply_msg(msg.id,'> Link posting is already locked</b>', ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Link posting has been #locked", ok_cb, false)
+    return reply_msg(msg.id,"> #Link posting has been #locked</b>', ok_cb, false)
   end
 end
 
@@ -208,11 +208,11 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return reply_msg(msg.id,"> #Link posting is #not locked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>Link posting is not locked</b>', ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Link posting has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>Link posting has been unlocked</b>', ok_cb, false)
   end
 end
 
@@ -225,11 +225,11 @@ local function lock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'yes' then
-    return reply_msg(msg.id,"> SuperGroup #spam is #already locked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>SuperGroup spam is already locked</b>', ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_spam'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> SuperGroup #spam has been #locked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>SuperGroup spam has been locked</b>', ok_cb, false)
   end
 end
 
@@ -239,11 +239,11 @@ local function unlock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'no' then
-    return reply_msg(msg.id,"> SuperGroup #spam is #not locked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>SuperGroup #spam is not locked</b>', ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_spam'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> SuperGroup #spam has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>SuperGroup #spam has been unlocked</b>', ok_cb, false)
   end
 end
 
@@ -253,11 +253,11 @@ local function lock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'yes' then
-    return reply_msg(msg.id,"> #Spamming is #already locked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>Spamming is already locked</b>', ok_cb, false)
   else
     data[tostring(target)]['settings']['flood'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Spamming has been #locked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>Spamming has been locked</b>', ok_cb, false)
   end
 end
 
@@ -267,11 +267,11 @@ local function unlock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'no' then
-    return reply_msg(msg.id,"> #Spamming is #not locked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>Spamming is not locked</b>', ok_cb, false)
   else
     data[tostring(target)]['settings']['flood'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Spamming has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,'> <b>Spamming has been unlocked</b>', ok_cb, false)
   end
 end
 
