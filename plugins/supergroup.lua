@@ -194,7 +194,7 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return reply_msg(msg.id,"> #Link posting is #already locked", ok_cb, false)
+    return reply_msg(msg.id,"> <b>Link posting is already locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
