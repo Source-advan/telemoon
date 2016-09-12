@@ -153,17 +153,17 @@ maxname[2] = user.print_name
 	if not maxuser[1] or maxuser[1] == '' then
 	maxuser[1] = ''
 	else
-	maxuser[1] = '@'..maxuser[1]
+	maxuser[1] = ''..maxuser[1]
 	end
 	if not maxuser[2] or maxuser[2] == '' then
 	maxuser[2] = ''
 	else
-	maxuser[2] = '@'..maxuser[2]
+	maxuser[2] = ''..maxuser[2]
 	end
 	if not maxuser[3] or maxuser[3] == '' then
 	maxuser[3] = ''
 	else
-	maxuser[3] = '@'..maxuser[3]
+	maxuser[3] = ''..maxuser[3]
 end
 local text = '> <b>Active Users</b>: \n\n> 1: <code>'..maxname[1]..' | '..maxuser[1]..' '..maxtex[1] + maxph[1] + maxst[1] + maxoth[1]..' Msgs.</code>'
 if maxid[2] then
@@ -258,17 +258,17 @@ maxname[2] = user.print_name
 	if not maxuser[1] or maxuser[1] == '' then
 	maxuser[1] = ''
 	else
-	maxuser[1] = '@'..maxuser[1]
+	maxuser[1] = ''..maxuser[1]
 	end
 	if not maxuser[2] or maxuser[2] == '' then
 	maxuser[2] = ''
 	else
-	maxuser[2] = '@'..maxuser[2]
+	maxuser[2] = ''..maxuser[2]
 	end
 	if not maxuser[3] or maxuser[3] == '' then
 	maxuser[3] = ''
 	else
-	maxuser[3] = '@'..maxuser[3]
+	maxuser[3] = ''..maxuser[3]
 end
 local text = '> <b>Active Users</b>: \n\n> <code>1: '..maxname[1]..' | '..maxuser[1]..' '..maxtex[1] + maxph[1] + maxst[1] + maxoth[1]..' Msgs.</code>'
 if maxid[2] then
